@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+{% autoescape false %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">{{ other_username }}'s Wall!</h1>
+        {% if age %}<h2 class="subtitle">{{ age }} years old</h2>{% endif %}
+        {% for post in posts %}
+        <article class="media">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    <img class="avatar-image" src={{ avatar }}>
+                </p>
+            </figure>
+            <div class="content">
+                <p>
+                    <strong>{{ other_username }}</strong><br>
+                    {{ post }}
+                </p>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endautoescape %}
+{% endblock %}

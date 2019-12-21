@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+{% autoescape off %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Update your Profile!</h1>
+        <form action="/profile" method="post">
+            <div class="field">
+                <label class="label" for="avatar">Avatar URL</label>
+                <input class="input" id="avatar" type="text" name="avatar" value="{{ avatar }}">
+            </div>
+            <div class="field">
+                <label class="label" for="age">Age</label>
+                <input class="input" id="age" type="number" name="age" value="{{ age }}">
+            </div>
+            <input type="text" class="input" style="display:none" id="username" name="username" value="{{ username }}">
+            <div class="field">
+                <p class="control">
+                    <button type="submit" class="button is-primary">Update Profile</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+{% endautoescape %}
+{% endblock %}

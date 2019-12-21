@@ -1,0 +1,48 @@
+{% from "macros.html" import nav_link with context %}
+{% set sitename = 'Snapitterbook' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ sitename }}</title>
+
+        <link href="/static/css/bulma.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">{{ sitename }}</a>
+            </div>
+            <div class="navbar-menu is-active">
+                <div class="navbar-start">
+                    {{ nav_link('index', 'Home') }}
+                    {% if not username %}
+                    {{ nav_link('login', 'Login') }}
+                    {% endif %}
+                    {% if username %}
+                    {{ nav_link('wall', 'Wall') }}
+                    {{ nav_link('post', 'Post') }}
+                    {{ nav_link('profile', 'Profile') }}
+                    {% endif %}
+                </div>
+                <div class="navbar-end">
+                    {% if username %}
+                    {{ nav_link('logout', 'Logout') }}
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        {% block content %}{% endblock %}
+        {% if error %}
+        <section class="section">
+            <div class="container">
+                <div class="notification is-warning">
+                    {{ error }}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    </body>
+</html>
